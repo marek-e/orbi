@@ -1,0 +1,116 @@
+docs/adr/0004-agent-loop.md
+  s_0c58d7eb10ca94::t_9e5455bbbeccc9 1-53,59,62-64,69,72-73,78
+  s_0c58d7eb10ca94::t_997149b8f81d54 54-58,60-61,65-68,70-71,74-77,79-81
+src/tools/bash.ts
+  s_0c58d7eb10ca94::t_03e90c51cf3b51 1-44,46-49,51-60
+  s_0c58d7eb10ca94::t_cf0f8a98e13a30 45,50
+package.json
+  s_0c58d7eb10ca94::t_58d4fbab19bfb0 1-5,7-14,22-23
+  s_0c58d7eb10ca94::t_79683aefed0b00 6
+  s_0c58d7eb10ca94::t_2f89f54369a0a0 15-21
+docs/adr/0001-language.md
+  s_0c58d7eb10ca94::t_01ffaffe0de3ea 1-52,57,60-62,67,70-71,76
+  s_0c58d7eb10ca94::t_954d72860e9203 53-56,58-59,63-66,68-69,72-75,77-79
+src/prompt.ts
+  s_0c58d7eb10ca94::t_33080953b19cab 1-12
+LICENSE
+  s_0c58d7eb10ca94::t_57fd9a3d22f443 1-21
+src/agent.ts
+  s_0c58d7eb10ca94::t_303fffcbcb0909 1-141
+.gitignore
+  s_0c58d7eb10ca94::t_c5dd20a8229d03 6
+  s_0c58d7eb10ca94::t_cecca58b45d1ab 1-5
+  s_96020d37b2cdd0::t_60bb03c2e1acf3 7
+docs/adr/0005-core-emits-events.md
+  s_0c58d7eb10ca94::t_61224733418fd3 22
+  s_0c58d7eb10ca94::t_26f491254b7c1f 1-21
+docs/roadmap.md
+  s_0c58d7eb10ca94::t_61224733418fd3 18,36,68
+  s_0c58d7eb10ca94::t_e172e56eef4440 1-2,6-17,19,24-35,37-62
+  s_0c58d7eb10ca94::t_e729df47d9c773 20,22-23
+  s_0c58d7eb10ca94::t_142da89c52ca3d 21
+  s_0c58d7eb10ca94::t_92c2f330570de8 3-5
+  s_0c58d7eb10ca94::t_86de01eda3c59c 63-67,69-70
+README.md
+  s_0c58d7eb10ca94::t_27f349dee40eda 1-6,8,10,12-25
+  s_0c58d7eb10ca94::t_648207a4cafdc9 32
+  s_0c58d7eb10ca94::t_2e51fe8cc6bf93 7,9
+  s_0c58d7eb10ca94::t_2afd1c8198d637 26-31,33
+  s_0c58d7eb10ca94::t_61224733418fd3 11
+CONTEXT.md
+  s_0c58d7eb10ca94::t_6d6ea31b4156fe 1-29
+docs/adr/0002-runtime.md
+  s_0c58d7eb10ca94::t_6f126cbb5c3314 68-74
+  s_0c58d7eb10ca94::t_a8b9a2152f19c7 27-31,33-35
+  s_0c58d7eb10ca94::t_d93170b251e87a 39-58
+  s_0c58d7eb10ca94::t_2111d424591d3e 59-64
+  s_0c58d7eb10ca94::t_eab780a933a1ec 19-24
+  s_0c58d7eb10ca94::t_d0a68410658e90 32
+  s_0c58d7eb10ca94::t_b77d506dede56a 78-82,87-89
+  s_0c58d7eb10ca94::t_61224733418fd3 9-13,86
+  s_0c58d7eb10ca94::t_dc8a769ffaf54a 1-8,14-18,25-26,36-38,65-67,75-77,83-85
+tsconfig.json
+  s_0c58d7eb10ca94::t_3973f16c934a2f 1-19
+docs/adr/0007-message-format.md
+  s_0c58d7eb10ca94::t_61224733418fd3 2,10,12,14,69-71,73,76
+  s_0c58d7eb10ca94::t_b5915470ba04d8 7,9
+  s_0c58d7eb10ca94::t_b9d5a5821051c1 1,3-6,8,11,13,15-52,57,60-62,66,74,77
+  s_0c58d7eb10ca94::t_b92c0c32189428 72
+  s_0c58d7eb10ca94::t_eb95c012642626 53-56,58-59,63-65,67-68,75,78-80
+docs/adr/README.md
+  s_0c58d7eb10ca94::t_61224733418fd3 20,23,25-26
+  s_0c58d7eb10ca94::t_b92c0c32189428 28
+  s_0c58d7eb10ca94::t_142da89c52ca3d 21
+  s_0c58d7eb10ca94::t_aa70e75358f1f3 1-19,22,24,27
+docs/adr/0003-anthropic-message-format-in-core.md
+  s_0c58d7eb10ca94::t_8830209c4e74b3 1,3-9,11,13,15,17,19
+  s_0c58d7eb10ca94::t_2017d32aa42609 2,10,14,16,18
+  s_0c58d7eb10ca94::t_c41f8c9ebf53c0 12
+docs/vision.md
+  s_0c58d7eb10ca94::t_3e89587e53ffc9 50
+  s_0c58d7eb10ca94::t_61224733418fd3 56
+  s_0c58d7eb10ca94::t_2385c9031f9848 13-18
+  s_0c58d7eb10ca94::t_fbbe0adabab38e 52-55,57
+  s_0c58d7eb10ca94::t_a41935a2b8faec 1-12,19-49,51,58-60
+  s_0c58d7eb10ca94::t_8ccdaec3d8ad69 61
+src/cli.ts
+  s_0c58d7eb10ca94::t_31d8c7bd297b01 1-96
+docs/research/2026-10-model-access.md
+  s_0c58d7eb10ca94::t_b92c0c32189428 40-52,55
+  s_0c58d7eb10ca94::t_ccf2f7766f6e97 1-39,53-54
+docs/adr/0006-model-access.md
+  s_0c58d7eb10ca94::t_2595fe8758456d 1,3-9,11,13,15,17,19-20,22,24-58,64,67-69,76,80,83-86
+  s_0c58d7eb10ca94::t_eb95c012642626 59-60,62-63,66,70-75
+  s_0c58d7eb10ca94::t_61224733418fd3 2,10,12,14,16,18,21,23,77-79,82
+  s_0c58d7eb10ca94::t_8ccdaec3d8ad69 61,65,81,87-88
+AGENTS.md
+  s_0c58d7eb10ca94::t_976ba808e9c2d6 7
+  s_0c58d7eb10ca94::t_6241b0ff50273a 4-6
+  s_0c58d7eb10ca94::t_38140541554af4 8-10
+bun.lock
+  s_0c58d7eb10ca94::t_a5f5a500697b07 1-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f3eacece6d1a873c8ce1056ca2e033cfe9687c89",
+  "prompts": {},
+  "sessions": {
+    "s_0c58d7eb10ca94": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e16979b7-47c8-4935-befb-ee68edb62f5d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_96020d37b2cdd0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a86b8270-bc02-4eac-b1e3-859d3964f30a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}

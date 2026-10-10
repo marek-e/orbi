@@ -71,7 +71,9 @@ function render(event: AgentEvent) {
       console.log(
         "\n" +
           gold(FACE.celebrating) +
-          dim(` ${requests} requests · ${k(inputTokens)} in · ${k(cacheReadTokens)} cached · ${k(outputTokens)} out`),
+          dim(
+            ` ${requests} requests · ${k(inputTokens)} in · ${k(cacheReadTokens)} cached · ${k(outputTokens)} out`,
+          ),
       );
       break;
     }
@@ -79,7 +81,10 @@ function render(event: AgentEvent) {
   last = event.type;
 }
 
-console.log(gold(`${FACE.idle} orbi`) + dim(` · ${model} · effort ${effort}${yolo ? " · yolo" : ""} · /exit to quit`));
+console.log(
+  gold(`${FACE.idle} orbi`) +
+    dim(` · ${model} · effort ${effort}${yolo ? " · yolo" : ""} · /exit to quit`),
+);
 
 while (true) {
   const input = (await rl.question(`\n${purple("›")} `)).trim();

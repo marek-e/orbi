@@ -65,7 +65,8 @@ export class Agent {
       try {
         for await (const event of stream) {
           if (event.type !== "content_block_delta") continue;
-          if (event.delta.type === "thinking_delta") yield { type: "thinking", delta: event.delta.thinking };
+          if (event.delta.type === "thinking_delta")
+            yield { type: "thinking", delta: event.delta.thinking };
           if (event.delta.type === "text_delta") yield { type: "text", delta: event.delta.text };
         }
         message = await stream.finalMessage();
@@ -127,7 +128,12 @@ export class Agent {
           ? await runBash(command, this.options.cwd)
           : { output: "The user declined to run this command.", isError: true };
         yield { type: "tool_result", id: call.id, ...result };
-        results.push({ type: "tool_result", tool_use_id: call.id, content: result.output, is_error: result.isError });
+        results.push({
+          type: "tool_result",
+          tool_use_id: call.id,
+          content: result.output,
+          is_error: result.isError,
+        });
       }
       this.messages.push({ role: "user", content: results });
     }

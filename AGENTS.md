@@ -20,4 +20,6 @@ Use the terms in `CONTEXT.md` (turn, request, event, sbire, mood).
 
 - `bun start` runs the REPL
 - `bun run typecheck`
+- `bun run lint` runs Oxlint with type-aware rules
+- `bun run format` formats with Oxfmt (`format:check` only checks). Markdown is left alone
 - `bun run build` writes `dist/orbi`

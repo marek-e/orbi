@@ -1,0 +1,23 @@
+{
+  "name": "orbi",
+  "version": "0.1.0",
+  "description": "A coding agent I build to understand how coding agents work",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "orbi": "src/cli.ts"
+  },
+  "scripts": {
+    "start": "bun src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "bun build src/cli.ts --compile --outfile dist/orbi"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "typescript": "^7.0.2"
+  }
+}

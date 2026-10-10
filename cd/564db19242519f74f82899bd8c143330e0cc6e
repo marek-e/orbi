@@ -1,0 +1,36 @@
+.oxfmtrc.json
+  s_9e887c8aa02b2b::t_5fcb6e4b5d4573 1-4
+src/cli.ts
+  s_9e887c8aa02b2b::t_5fcb6e4b5d4573 74-76,84-87
+.zed/settings.json
+  s_9e887c8aa02b2b::t_2ecea90e07d489 1-68
+.github/workflows/check.yml
+  s_9e887c8aa02b2b::t_2ecea90e07d489 1-14
+AGENTS.md
+  s_9e887c8aa02b2b::t_ba8f34dc8516c8 23-24
+.oxlintrc.json
+  s_9e887c8aa02b2b::t_ba51996ab1a067 1-9
+package.json
+  s_9e887c8aa02b2b::t_a0eefba2cd7bff 24-26
+  s_9e887c8aa02b2b::t_5fcb6e4b5d4573 5,10,14-17
+src/agent.ts
+  s_9e887c8aa02b2b::t_5fcb6e4b5d4573 68-69,131-136
+bun.lock
+  s_9e887c8aa02b2b::t_9d4a06f902dccb 12-14,24-111,164-169,172-173
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "cd564db19242519f74f82899bd8c143330e0cc6e",
+  "prompts": {},
+  "sessions": {
+    "s_9e887c8aa02b2b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "036d3df4-5c86-4aae-979d-85b77ff37d1b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}

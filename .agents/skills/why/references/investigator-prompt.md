@@ -1,12 +1,12 @@
 # Investigator Prompt Template
 
-Build each investigator's prompt from this template. Fill in the placeholders. Append the single category playbook `sources/<source>.md` matching this investigator's evidence category (see `source-playbook.md` for the index). If the target code looks defensive (null checks, retry logic, timeout handling, rate limiting, feature flags, egress guards, OOM handlers), also append `sources/incident-postmortem.md` for the incident-flavored queries to run inside its own source.
+Build each investigator's prompt from this template. Fill in the placeholders. Append the single playbook `sources/<source>.md` matching this investigator's source (see `source-playbook.md` for the index).
 
 ---
 
 You are investigating the historical context and motivation behind a piece of code. A separate synthesizer combines your findings with other investigators' into a final answer, so gather evidence accurately rather than writing prose.
 
-Other investigators search different sources in parallel. Don't try to cover everything. Focus on your assigned source and go deep.
+Another investigator searches a different source in parallel. Don't try to cover everything. Focus on your assigned source and go deep.
 
 ## Operating Posture
 
@@ -32,9 +32,7 @@ Work like a careful, cautious, precise investigator. Don't produce a narrative. 
 **Initial commits touching this code (most recent first):**
 {COMMIT_LIST}
 
-**PR numbers extracted from commit messages:** {PR_NUMBERS}
-
-**Ticket IDs mentioned in commits or PR bodies (if any):** {TICKET_IDS}
+**ADR numbers, roadmap phases, journal dates and phase tags mentioned in commits or comments (if any):** {RECORD_REFS}
 
 ## Your Assigned Source
 
@@ -47,9 +45,9 @@ Work like a careful, cautious, precise investigator. Don't produce a narrative. 
 Gather **evidence**. Don't answer the question directly. The synthesizer weighs the evidence and forms conclusions. Follow this loop:
 
 1. **Cast a wide net first.** Start broad so you don't miss related context, then narrow in on specific items.
-2. **Read the whole thing.** Read any PR, ticket, doc, or thread fully, not just the title or summary. The key evidence is often buried in a comment, a subtask, or a follow-up.
-3. **Follow links within your assigned source.** If a PR references another PR or commit, pull it. If a ticket links a parent or sibling, pull it. If a doc links another doc, pull it. Stay inside your assigned source. When you spot a cross-source reference, do NOT chase it yourself. Record it under "Additional Leads" so the investigator assigned to that source can pick it up. The one-investigator-per-category design depends on this. Chasing cross-source links duplicates work and confuses scope.
-4. **Capture quotes verbatim** with their location (PR number, ticket ID, URL, commit hash, file:line). The synthesizer needs to cite this precisely.
+2. **Read the whole thing.** Read any commit message, ADR, journal entry, or doc fully, not just the subject or summary. The key evidence is often buried in Consequences, a knock-on note, or a follow-up commit.
+3. **Follow links within your assigned source.** If a commit references another commit or a revert, pull it. If an ADR is superseded, rejected, or links a related ADR, pull that one. If a doc links another doc or a research note, pull it. Stay inside your assigned source. When you spot a cross-source reference, do NOT chase it yourself. Record it under "Additional Leads" so the investigator assigned to that source can pick it up. The one-investigator-per-category design depends on this. Chasing cross-source links duplicates work and confuses scope.
+4. **Capture quotes verbatim** with their location (commit hash, file:line, ADR path and section, journal file, tag name). The synthesizer needs to cite this precisely.
 5. **Note absences.** If you searched for something and came up empty, that's also a finding. Record what you searched for and what you didn't find.
 6. **Watch for contradictions.** If two items in your source disagree, record both. Don't suppress the inconvenient one.
 
@@ -57,7 +55,7 @@ Don't synthesize or form a final opinion on "the why." Collect the raw material 
 
 ## Epistemic Discipline
 
-- **Don't confuse mechanics with motivation.** A commit changing `limit = 50` to `limit = 100` shows the change, not necessarily why. Look for the explanation in the commit message, PR description, linked ticket, or review comments.
+- **Don't confuse mechanics with motivation.** A commit changing `limit = 50` to `limit = 100` shows the change, not necessarily why. Look for the explanation in the commit message, a nearby comment, the ADR, or the journal entry.
 - **Don't infer intent from code style.** "The author chose a functional approach" is an observation about code, not evidence of intent. Claim intent only when the author stated it.
 - **Preserve uncertainty.** If the evidence is ambiguous, say so. If one reading is more plausible but not certain, say that. Don't collapse ambiguity to look decisive.
 - **No silent substitutions.** If the question is about feature X and you only find evidence about feature Y, don't present Y's evidence as if it answers X.
@@ -67,7 +65,7 @@ Don't synthesize or form a final opinion on "the why." Collect the raw material 
 Return your findings in this structure. The synthesizer will read it directly.
 
 ### Source
-Which source you investigated (source control, issue / ticket tracker, long-form documents, real-time team chat, infrastructure observability, error / exception tracking, product analytics warehouse, code comments, etc.).
+Which source you investigated (source control history or Orbi records).
 
 ### What I Searched
 The queries you ran, the items you opened, the places you looked. Be specific. This tells the synthesizer how thorough the investigation was and what might still be unsearched.
@@ -75,7 +73,7 @@ The queries you ran, the items you opened, the places you looked. Be specific. T
 ### Direct Evidence Found
 For each piece that explicitly addresses the question:
 - **What it says**: verbatim quote or accurate paraphrase
-- **Where it's from**: PR #123, ticket ID, doc URL, chat permalink, commit hash, or file:line
+- **Where it's from**: commit hash, file:line, ADR path and section, journal file, or tag name
 - **Author and date** (if available)
 - **Relevance**: one sentence on how it bears on the question
 
@@ -90,10 +88,10 @@ Items that don't explicitly answer the question but bear on it. For each:
 Two items that disagree with each other, with both citations.
 
 ### Gaps
-What you searched for and didn't find. Be specific: "Searched the issue tracker for [query] across [time range]. No matching issues." These absences are valuable data.
+What you searched for and didn't find. Be specific: "Searched docs/adr/ and journal/ for [query]. No ADR or entry mentions it." These absences are valuable data. A source that doesn't exist on this machine (such as `journal/`) is a gap too. Say so.
 
 ### Additional Leads
-Anything that suggests further investigation in a different source. For example, if a PR references a chat thread that wasn't in your source, note it so the real-time team chat investigator or a follow-up pass can pursue it.
+Anything that suggests further investigation in the other source. For example, if a commit message names an ADR, note it so the Orbi records investigator or a follow-up pass can pursue it. If an ADR names the commit or file that implements it, note that for the source control investigator.
 
 ## What You're Not Doing
 

@@ -2,14 +2,13 @@
 
 ## What this source contains
 
-- Commit history (messages, dates, authors, diffs)
-- PR descriptions, review comments, and discussion threads (via `gh`)
+- Commit history (messages, dates, authors, diffs). Orbi commits straight to `main` without PRs, so the commit message is the whole review record.
 - Inline code comments, TODOs, FIXMEs, deprecation notes
-- ADRs (architectural decision records) if the repo keeps them
 - Tests. Names and assertions often encode the edge cases that motivated a change
 - Related files modified in the same commits (co-change signal)
-- CHANGELOG entries, release notes in the repo
-- Issue/ticket IDs mentioned in commit messages and PR bodies
+- ADR numbers, journal dates and phase names mentioned in commit messages. These are leads for the Orbi records investigator, not this one.
+
+ADRs, `docs/`, the journal and phase tags belong to the Orbi records source (`orbi-records.md`). Don't search them here.
 
 The most trustworthy source, tied directly to the code, and the most complete. Everything that went through the repo should be here.
 
@@ -37,24 +36,16 @@ git show <hash>
 git log <old>..<new> -p -- <file>
 ```
 
-For each substantive commit, pull the PR context:
+For each substantive commit, read the full message, not just the subject:
 
 ```bash
-# Find the PR number from the merge commit or branch
+# The body is where the reasoning is, when there is any
 git log -1 --format=%B <hash>
-
-# Full PR context: body, review comments, linked issues
-gh pr view <number> --json title,body,author,createdAt,mergedAt,labels,closingIssuesReferences,comments,reviews,files
-
-# The --json reviews and comments fields are where the real signal is
 ```
 
-Look for out-of-band docs:
+Look for in-code signals:
 
 ```bash
-# ADRs often live in docs/adr/ or similar
-rg -l -i 'architecture.decision' --glob '*.md'
-
 # TODOs and FIXMEs near the target
 rg -n -C2 '(TODO|FIXME|HACK|XXX|NOTE)' <target_file>
 
@@ -64,25 +55,24 @@ rg -l '<symbol>' --glob '*test*'
 
 ## What good evidence looks like here
 
-- A PR description that explains the problem being solved, not just the change ("This fixes the pagination bug that caused X")
-- A long review thread where alternatives were debated
+- A commit body that explains the problem being solved, not just the change ("Refuse ambiguous edits because the model retried the same wrong match")
+- A sequence of commits that tried one approach, reverted it, and tried another
 - An inline comment near the target line that explains a non-obvious constraint
 - A test named `test_handles_edge_case_when_X` that reveals an edge case motivating the code
-- A commit message that references a ticket or incident ID
-- A CHANGELOG entry that summarizes the user-visible rationale
+- A commit message that names the ADR or roadmap phase it implements
 
 ## Common pitfalls
 
-- **Squash-merge flatlands.** If the repo squashes PRs, individual commits in the branch history are lost. Fall back to PR body and comments.
+- **Drafts that predate the decision.** Some code was written before the ADR that governs it (the Phase 1 draft in `src/` predates the provider decision). Its commits explain the draft, not the decision. Report the dates so the synthesizer can compare them with the ADR's.
 - **Misleading commit messages.** "Small refactor" sometimes hides an intentional behavior change. Look at the diff, not the message.
 - **Cargo-culted patterns.** The author may have copied a pattern without understanding why. Check if the pattern originated earlier in the codebase and investigate *that* commit.
-- **Bot commits and auto-merges.** Dependabot, Renovate, and automated backports usually don't carry motivation. Skip them when trying to find intent.
-- **Treating code as evidence of intent.** The code itself isn't evidence for why it exists. Evidence comes from commit messages, PRs, comments, tests, docs. Don't cite "the function is named X" as evidence of intent.
+- **Agent-written commit messages.** A coding agent's commit message can describe what changed in confident terms without the operator's reasoning. Treat it as a description of the change, and record the matching journal date under Additional Leads.
+- **Treating code as evidence of intent.** The code itself isn't evidence for why it exists. Evidence comes from commit messages, comments, tests, and written records. Don't cite "the function is named X" as evidence of intent.
 
 ## What to return
 
-Every commit/PR/comment that bears on the question, with:
+Every commit or comment that bears on the question, with:
 - The exact text (quoted)
-- The hash / PR number / file:line
+- The hash or file:line
 - Author and date
 - Whether it's direct (explicitly addresses the question) or circumstantial

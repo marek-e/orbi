@@ -20,7 +20,7 @@ The explorers each investigated a different angle of the same subsystem. Their f
 
 Write an explanation a senior engineer unfamiliar with this area could read and walk away with a solid mental model, understanding the architecture well enough to start working in it confidently.
 
-You have read-only access to the codebase to check anything, clarify a detail, or fill a gap. Use Read, Grep, and Glob as needed. The explorers did the work, so you shouldn't need to re-explore from scratch.
+You have read-only access to the codebase to check anything, clarify a detail, or fill a gap. Search and read files as needed. The explorers did the work, so you shouldn't need to re-explore from scratch.
 
 ## Output Format
 
@@ -30,7 +30,7 @@ Use this structure, adapted to what makes sense for the question. Not every sect
 1-2 paragraphs. What is this thing, what does it do, why does it exist. Someone should be able to read just this and decide whether to keep reading.
 
 ### Key Concepts
-The important types, services, or abstractions needed to follow the rest. Brief definitions, not exhaustive.
+The important types, modules, or abstractions needed to follow the rest. Brief definitions, not exhaustive.
 
 ### How It Works
 The core of the explanation, and the longest section. Walk through the flow: what triggers it, what happens step by step, where data goes, what the decision points are.
@@ -48,7 +48,7 @@ Non-obvious things, surprising behavior, historical context, pitfalls. Skip this
 ## Communication Style
 
 - Use concrete language, not abstractions-about-abstractions
-- Say "the `UserService` calls `AuthClient.refresh()`" not "the service delegates to the client"
+- Say "`render` in `src/cli.ts` switches on the `AgentEvent` type" not "the UI consumes the core's output"
 - When something is complex, explain why it's complex. Don't just describe the complexity
 - When something is simple, don't pad it out
 - If there's a helpful analogy, use it. If there isn't, don't force one

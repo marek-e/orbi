@@ -2,7 +2,7 @@
 
 How to reason about confidence when evidence is historical, fragmentary, and sometimes contradictory, and how to communicate it without flattening it into false certainty.
 
-Code doesn't carry its own motivation. You can read what code does. You can't read *why it exists*. That lives in commits, PRs, tickets, docs, and conversations, all incomplete, biased, and sometimes missing entirely. Pretending otherwise produces confident-sounding guesses that mislead the user.
+Code doesn't carry its own motivation. You can read what code does. You can't read *why it exists*. That lives in commits, comments, ADRs, the journal, and docs, all incomplete, biased, and sometimes missing entirely. Pretending otherwise produces confident-sounding guesses that mislead the user.
 
 ## Confidence Tiers
 
@@ -13,11 +13,11 @@ Every claim in the final output must sit in one of these tiers. The tier determi
 An explicit, textual citation that answers the question. Not "the code does X so the author must have wanted X." Something an author actually *wrote* that says why.
 
 Examples:
-- A PR description that says "this fixes the bug where users with >1000 items couldn't paginate"
-- A ticket that says "we're adding this because customer Acme requested it in their security review"
+- A commit message that says "truncate bash output so one noisy command can't fill the context window"
+- An ADR's Decision section that says "we chose option A over option B because the core must stay provider-neutral"
 - A code comment that says "// clamp to 100 because the upstream API rejects larger values"
-- A design doc that says "we chose option A over option B because we need persistence across restarts"
-- A chat message from the author saying "switching to this approach since the old one was flaky in tests"
+- A vision non-goal that says Orbi doesn't depend on agent frameworks, cited for why the loop is hand-written
+- A journal entry from the author saying "switching to this approach since the old one was flaky in tests"
 
 Phrasing: confident, present tense. "This exists because X." Cite the source.
 
@@ -26,9 +26,9 @@ Phrasing: confident, present tense. "This exists because X." Cite the source.
 Multiple pieces of indirect evidence converge. No single source states it explicitly, but the pattern across sources makes it likely.
 
 Examples:
-- The PR title says "improve performance," the ticket is labeled "perf," and the surrounding commits all touch the same hot path
+- The commit subject says "improve performance," the journal entry that day is about slow turns, and the surrounding commits all touch the same hot path
 - Multiple tests were added alongside the change, all exercising edge cases with very large inputs
-- The author's other PRs from the same week all mention the same incident in their descriptions
+- The author's other commits from the same week all mention the same ADR in their messages
 
 Phrasing: confident but clearly derived. "The evidence points strongly to X: [the specific pieces]." Cite multiple sources.
 
@@ -37,8 +37,8 @@ Phrasing: confident but clearly derived. "The evidence points strongly to X: [th
 A reasonable reading of the context, but nothing explicitly supports it. The reader should understand this is *your interpretation*, not a fact from the record.
 
 Examples:
-- The PR doesn't say why, but given the error was happening in production (per the incident channel timing) and the fix was rushed (merged the same day), it was likely a hotfix.
-- The function name suggests retry logic. The retry count is 3. This matches the team's general convention of "3 retries" seen elsewhere in the codebase.
+- The commit doesn't say why, but given the journal entry that day describes the bug and the fix landed within the hour, it was likely a quick fix rather than a planned change.
+- The function name suggests retry logic. The retry count is 3. This matches the "3 retries" convention seen elsewhere in the codebase.
 
 Phrasing: hedged. "It appears", "likely", "suggests", "is consistent with", "one reading is". Make the inference chain explicit: "Given A and B, C seems likely because D."
 
@@ -47,8 +47,8 @@ Phrasing: hedged. "It appears", "likely", "suggests", "is consistent with", "one
 A plausible hypothesis, but the evidence is thin and other explanations fit equally well. Presenting these is valuable, but mark them clearly as guesses.
 
 Examples:
-- "This might be a workaround for a browser bug that's since been fixed, but we found no contemporary evidence of that."
-- "It's possible this threshold was chosen to match an SLA commitment, but no SLA doc references it."
+- "This might be a workaround for a Bun bug that's since been fixed, but we found no contemporary evidence of that."
+- "It's possible this limit was chosen to match the provider's rate limit, but no ADR or research note references it."
 
 Phrasing: explicitly speculative. "One possibility is X, but we have no direct evidence." Usually lives in the "Competing Hypotheses" section alongside other possibilities.
 
@@ -56,7 +56,7 @@ Phrasing: explicitly speculative. "One possibility is X, but we have no direct e
 
 You looked and couldn't find out. A valid and important outcome. Document it.
 
-Phrasing: "We searched X, Y, and Z and found no evidence of why." Be specific about *what* you searched. "We couldn't find out" is less useful than "we searched the ticket tracker with keywords A and B, scanned the 6 PRs that touched this file since 2023, and grep'd the repo for string literals matching the threshold. None surfaced a rationale."
+Phrasing: "We searched X, Y, and Z and found no evidence of why." Be specific about *what* you searched. "We couldn't find out" is less useful than "we searched docs/adr/ and journal/ for keywords A and B, scanned the 6 commits that touched this file since phase-1, and grep'd the repo for string literals matching the threshold. None surfaced a rationale."
 
 ## Phrasing Guide
 
@@ -68,7 +68,7 @@ These imply **Direct** or **Supported** confidence. Don't use them for inference
 - "the reason is". Same
 - "was designed to". Claims author intent
 - "fixes", "addresses", "solves". Claims the change achieved its goal
-- "the team decided". Claims a group decision happened
+- "Marek decided". Claims a decision was actually made, not just implied by the code
 
 If you're using these, you should have a citation immediately adjacent.
 
@@ -111,19 +111,19 @@ The user's guess is a prompt for investigation, not a conclusion to validate.
 
 ## When Evidence Contradicts
 
-If two sources disagree (the PR description says one thing, the ticket says another), surface both. Don't pick the one that fits a tidier narrative. A typical pattern:
+If two sources disagree (the commit message says one thing, the ADR says another), surface both. Don't pick the one that fits a tidier narrative. A typical pattern:
 
-- **The ticket says** "we need this for customer X's compliance requirement"
-- **The PR says** "cleaning up tech debt in this area"
+- **The ADR says** "the core must not depend on one provider's types"
+- **The commit says** "cleaning up types in the agent loop"
 
-Both may be true (the ticket motivated the work, the PR is the author's framing of it), or one may be wrong. Present both with their citations and let the user make the call.
+Both may be true (the ADR motivated the work, the commit is the author's framing of it), or one may be wrong. Present both with their citations and let the user make the call.
 
 ## When Evidence Is Missing
 
 An honest "we don't know" is one of the most valuable outputs this skill can produce. The user now knows:
 
 - The answer isn't in the obvious places
-- They'll need to ask a human (the original author, the product owner, the team lead) to find out
+- They'll need to ask Marek, who wrote the code and the records, to find out
 - Or they can decide the question isn't worth pursuing further
 
 Failing to mark a gap and filling it with a confident guess actively harms the user. They'll act on the guess.

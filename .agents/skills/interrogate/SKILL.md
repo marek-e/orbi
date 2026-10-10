@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Interrogate
 
-Spawn one reviewer per configured model to adversarially review code changes. Each model gets the same prompt and rubric. The adversarial signal comes from model diversity, not assigned personas.
+Spawn one reviewer per configured model to adversarially review code changes. Each model gets the same prompt and rubric. The adversarial signal comes from model diversity, not assigned personas. When the harness offers only one model family, reviewers run on the same model with independent briefs and no shared context, and their agreement is weaker evidence. Say so in the verdict.
 
 The deliverable is a synthesized verdict. Do NOT auto-apply changes.
 
@@ -15,7 +15,7 @@ The deliverable is a synthesized verdict. Do NOT auto-apply changes.
 Identify what to review from context:
 
 - If the user points at specific files or a diff, use that
-- If on a feature branch, run `git diff main...HEAD` (or the appropriate base branch) for the full changeset
+- Orbi commits straight to `main`, so pick a base: the last phase tag, a commit the user names, or `HEAD` for uncommitted work. Run `git diff <base>` for the full changeset
 - If the user's message references recent work, gather the relevant files
 
 Package the diff (or file contents) plus any surrounding context files the reviewers need to understand the code.
@@ -26,26 +26,21 @@ Before spawning reviewers, state the intent explicitly. Derive this from:
 
 - The user's message
 - Commit messages
-- PR description if one exists
+- The roadmap phase the work belongs to (`docs/roadmap.md`) and any ADR it implements (`docs/adr/`)
 - The code itself
 
 Write one clear paragraph. If you're unsure about the intent, ask the user before proceeding.
 
 ## Step 3, Spawn Reviewers
 
-Launch all reviewers in a single message using the Task tool. Use the `interrogate reviewers` line in `~/.cursor/rules/pstack-models.mdc`, one reviewer per entry, extending or shrinking the Reviewer A/B labels below to the configured entry count. If the rule or that line is missing, use the table defaults.
+Spawn all reviewers at once as read-only subagents. Use the `interrogate reviewers` line in `~/.agents/pstack-models.md` if that file exists, one reviewer per entry, extending or shrinking the Reviewer A/B labels below to the configured entry count. Without it, use the defaults below.
 
 | Subagent | Default model |
 |----------|---------------|
-| Reviewer A | `claude-opus-5-5-xhigh` |
-| Reviewer B | `grok-4.7-xhigh-fast` |
+| Reviewer A | the judgment model |
+| Reviewer B | a different model family when the harness offers one; otherwise the same model with an independent brief and no shared context |
 
-For each reviewer:
-- `subagent_type`: `generalPurpose`
-- `model`: the configured `interrogate reviewers` entry, or the table default with no configured line. For an `auto` or `inherit-parent` entry, omit `model` so that reviewer runs on the parent model.
-- `readonly`: `true`
-
-If the Task tool rejects a configured entry, run that reviewer on the table default of its family and say so. Families go by prefix: `claude-*` and `grok-*`. With no family match, use Reviewer A's default. If it rejects a table default, check the valid slugs in the Task tool's error message, pick the closest equivalent (prefer the same family and reasoning tier), spawn with it, and open a separate PR to update the default table. Do not block the review on the slug issue. Never treat an alias entry as a rejected slug or apply either fallback to it.
+For an `auto` or `inherit-parent` entry, that reviewer runs on the parent model. If the harness rejects a configured model, run that reviewer on Reviewer A's default and say so. Do not block the review on a model problem. Never treat an alias entry as a rejected model.
 
 Read `references/reviewer-prompt.md` and fill in the template with:
 1. The stated intent
@@ -73,7 +68,7 @@ Read `references/lead-judgment.md` for the full framework.
 
 Categorize every finding using these buckets:
 
-- **Act on**. Real issues affecting correctness, security, or maintainability given the actual goals. These would block a real PR.
+- **Act on**. Real issues affecting correctness, security, or maintainability given the actual goals. These would block the commit.
 - **Consider**. Legitimate points, but you're not sure they outweigh the cost of addressing them right now. Worth the user's attention.
 - **Noted**. Technically valid but not actionable. Context-dependent, premature optimization, or low-impact given the current stage.
 - **Dismissed**. Wrong, nitpicky, or missing context. Brief explanation why.

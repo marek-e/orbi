@@ -15,6 +15,8 @@ Place validation, type narrowing, and error handling at system boundaries. Trust
 - **Inside the system:** typed data, error propagation, no re-validation. Trust the types.
 - **Across the boundary.** Expose domain concepts, not the boundary's private representation. Keep general-purpose mechanism inside and special-purpose policy at the edge.
 
+In Orbi the boundaries are the provider adapter (provider wire format on one side, Orbi's own message format on the other, per ADR 0007), the Sign in with ChatGPT OAuth flow and its token storage, CLI input, and tool subprocess output. The core never prints. It emits events, and the REPL renders them.
+
 **Applications:**
 
 Validation and error handling:

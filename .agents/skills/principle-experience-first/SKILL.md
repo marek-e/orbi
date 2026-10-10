@@ -1,19 +1,19 @@
 ---
 name: principle-experience-first
-description: "Apply when product, UX, or feature-scope tradeoffs come up. Choose user delight over implementation convenience; ship fewer polished features over more rough ones."
+description: "Apply when experience or feature-scope tradeoffs come up. Choose a good experience over implementation convenience; ship fewer polished features over more rough ones."
 disable-model-invocation: true
 ---
 
 # Experience First
 
-When implementation convenience conflicts with user delight, choose delight.
+When implementation convenience conflicts with a good experience, choose the experience.
 
 - Every feature, control, and option must be justified
 - Ship less, ship better (polished experience with three features beats rough one with ten)
-- Prototype before committing (design decisions are cheaper in throwaway HTML than production code)
-- Get the details right (transitions, alignment, spacing, feedback, error states)
+- Prototype before committing (design decisions are cheaper in a throwaway script than in `src/`)
+- Get the details right (streaming output, approval prompts, Ctrl-C, error messages)
 - Tighten the core loop (every feature should serve the central workflow or get out of the way)
 
-The user is whoever consumes the work. For a UI that is the end user. For a library or an internal API it is the colleague who imports it. The engineer who maintains the code next is a user too. Weigh their experience the same way, and explain impact from their perspective.
+Orbi isn't a product, so there is no end user to onboard. Its users are Marek, who uses it every day, and the readers of the article series, who clone a phase tag, run it, and read the code. The model is a user too. It reads every tool result and error message, so write those for it. Weigh each user's experience and explain impact from their side.
 
 Foundations should serve the experience. Foundational thinking governs the *sequence* of work. This principle governs the *target*.

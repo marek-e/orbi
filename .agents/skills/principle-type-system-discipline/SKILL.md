@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 The type checker is a proof assistant. Use it to eliminate impossible states, mismatched primitives, and unhandled variants at compile time. A case the types let you ignore becomes a runtime failure the compiler could have stopped. Prefer defining errors and special cases out of existence over proliferating handlers. Unrepresentable states, total functions, and interface redesign (the patterns below) are the tools.
 
-Applies to any typed language. Skills like `typescript-best-practices` ground it in specific syntax.
+Applies to any typed language. Skills like `typescript-best-practices` ground it in specific syntax. In Orbi the TypeScript must stay erasable (ADR 0002, `erasableSyntaxOnly`): no enums, parameter properties, or namespaces with code, so model variants as string-literal and discriminated unions like `AgentEvent`.
 
 **The patterns:**
 

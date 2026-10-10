@@ -15,6 +15,7 @@ The human supervises asynchronously. Agents must stay unblocked. Make reasonable
 - **Make the system self-healing.** When you notice a problem, log it and fix it in the next round.
 
 **Boundaries:**
-- **Irreversible actions** (force-push, delete production data, send external messages) still require confirmation.
-- **Reversible actions** (write code, edit notes, split tasks) should proceed without blocking.
-- **Product direction** comes from the human. *Execution* should not block.
+- **Irreversible or public actions** (pushing commits or tags to the public remote, force-push, deleting saved sessions or journal entries) still require confirmation.
+- **Accepting an ADR is the human's alone.** Draft it as `proposed`, keep working on whatever doesn't depend on it, and never mark it accepted.
+- **Reversible actions** (write code, edit notes, commit locally, split tasks) should proceed without blocking.
+- **Direction** (what Orbi becomes, which roadmap phase comes next) comes from the human. *Execution* should not block.

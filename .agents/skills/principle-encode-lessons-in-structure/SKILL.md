@@ -16,16 +16,18 @@ When you catch yourself writing the same instruction a second time:
 2. If yes, encode it. Delete the instruction
 3. If no (requires judgment), make the instruction more prominent and add an example of the failure mode
 
-**Pick the strongest mechanism.** When more than one mechanism would work, choose the strongest the situation allows (an unrepresentable state that cannot compile, then a lint or banned API that fails CI, then a canonical helper, then a runtime check), because agents copy whatever the surrounding code already does and a weaker guard becomes the next template.
+**Pick the strongest mechanism.** When more than one mechanism would work, choose the strongest the situation allows (an unrepresentable state that cannot compile, then a compiler flag or banned API that fails `bun run typecheck`, then a canonical helper, then a runtime check), because agents copy whatever the surrounding code already does and a weaker guard becomes the next template.
+
+Orbi example: ADR 0002 requires TypeScript that Node can strip. Instead of a line in `AGENTS.md` saying "no enums", set `erasableSyntaxOnly` in `tsconfig.json` so the typecheck rejects them. It is not set yet, and `src/agent.ts` still uses a parameter property it would reject.
 
 **Corollary:** If the fix is structural, only use the structural fix. The instruction is the symptom.
 
 **Feedback loop:**
 - **Capture every correction.** When the human intervenes or tests fail, decide if it's a one-off or a pattern.
-- **Route to the right layer.** One-off -> brain note. Recurring fix -> skill or lint rule. Systemic issue -> principle.
+- **Route to the right layer.** One-off -> journal entry. Recurring fix -> skill, `AGENTS.md` line, or typecheck rule. Systemic issue -> principle.
 - **Close the loop.** Don't just record. Apply now or create a concrete todo.
 
 **Anti-patterns:**
 - Acknowledging without recording ("I'll keep that in mind" does not persist)
-- Recording without routing (a brain note about a lint rule that should exist is wasted unless the lint rule gets implemented)
+- Recording without routing (a journal entry about a check that should exist is wasted unless the check gets implemented)
 - Fixing without generalizing (fixing one instance while leaving the recurring pattern intact)

@@ -20,7 +20,7 @@ When you find a potential bug, trace the execution path. Don't just flag "this c
 
 Is the code fixing the actual problem or papering over a symptom?
 
-Answering this often requires looking beyond the changed files. Read the surrounding code (callers, callees, type definitions, sibling modules) and understand the architecture the change lives in. Use the tools available to you (Read, Grep, Glob) to explore. Follow the call chain. Read the types. Understand why the code exists before judging whether the change addresses the right layer.
+Answering this often requires looking beyond the changed files. Read the surrounding code (callers, callees, type definitions, sibling modules) and understand the architecture the change lives in. Use the read and search tools available to you to explore. Follow the call chain. Read the types. Understand why the code exists before judging whether the change addresses the right layer.
 
 - Guard clauses that mask a deeper invariant violation
 - Retry logic that hides a broken contract
@@ -46,7 +46,7 @@ Don't penalize simple code for lacking abstraction. Premature abstraction is wor
 
 Can you tell that this code works from reading it?
 
-- Are there tests? Do they test behavior or implementation details?
+- Are there tests? Do they test behavior or implementation details? Orbi has no test suite yet (`bun test` is the runner when one arrives). Without tests, ask how the change was checked: `bun run typecheck`, a real turn in the REPL, a recorded request.
 - Are there assertions/invariants that would catch regressions?
 - If this is a bug fix: is there a test for the bug?
 - If this touches an integration boundary: is the full path tested?
@@ -71,7 +71,7 @@ Simpler is better unless simpler is wrong. Three lines of duplication beat a pre
 
 For each security finding, trace the input path through the code and show it.
 
-- User input flowing to dangerous sinks (SQL, shell, eval, innerHTML) without sanitization
-- Authentication/authorization gaps in new endpoints
-- Secrets in code, logs, or error messages
+- Input flowing to dangerous sinks (shell, eval, file paths) without sanitization. In Orbi, model output is input: a tool call's arguments come from the model.
+- Side effects (commands, file writes) that run without the user's approval. Every side effect needs approval until the Phase 4 sandbox exists (`docs/vision.md`).
+- Secrets in code, logs, session files, or error messages, such as the ChatGPT sign-in tokens. The repo is public.
 - TOCTOU (time-of-check-time-of-use) in security-critical paths

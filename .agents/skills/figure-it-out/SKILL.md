@@ -24,10 +24,11 @@ Present the framing and tradeoffs before committing to a long run. Reversible wo
 
 ## Phase B: Design the workflow
 
-Decompose into atomic, independently-landable units. Sequence riskiest-unknown-first. Scaffold and verification come before features (the **foundational-thinking** principle skill).
+Decompose into atomic units, each one a verified commit on its own. Sequence riskiest-unknown-first. Scaffold and verification come before features (the **foundational-thinking** principle skill).
 
 - Build the verification harness before the work, with the baseline captured from the pre-change state, so the check reads as "old value vs new value".
 - For one-way-door design decisions, run the **architect** skill (it runs **arena**). Skip it for mechanical work whose shape is already concrete. A second arena over a settled design is over-engineering (the **laziness-protocol** principle skill).
+- A decision that needs an ADR (hard to reverse, real alternatives, per `AGENTS.md`) gets drafted as `proposed` through the **adr** skill. Only Marek accepts it. Sequence the units that depend on it after his answer, and keep running the ones that don't.
 - Decide what fans out. Parallelize only across seams, and give each worker its own worktree or branch (the **separate-before-serializing-shared-state** principle skill). Don't over-fan.
 - Write the designed phase list down. That list is what the human reviews.
 
@@ -44,10 +45,10 @@ Apply the **sequence-verifiable-units** principle skill, verifying each unit bef
 
 ## Phase D: Keep the audit trail
 
-Log the run via the **show-me-your-work** skill. figure-it-out's work is usually ambitious enough to commit the trail so the reviewer can read it in the PR. The trail plus the diff is what lets the human come back and trust the work.
+Log the run via the **show-me-your-work** skill. figure-it-out's work is usually ambitious enough to commit the trail next to the work so Marek can read it with the commits. Point to it from the session's journal entry. The trail plus the diff is what lets the human come back and trust the work.
 
 ## Phase E: Verify and hand back
 
-Check the whole against the Phase A predicate on the real product, not just the harness. Encode any recurring correction as a gate, a lint rule, a check, or a script (the **encode-lessons-in-structure** principle skill).
+Check the whole against the Phase A predicate on the real thing (a real turn in `bun start` or the built `dist/orbi`), not just the harness. Encode any recurring correction as a gate, a lint rule, a check, or a script (the **encode-lessons-in-structure** principle skill).
 
 **Reply:** the playbook you designed, the rigor level and why, the decision-trail path, what's verified against the predicate, and what's still open.

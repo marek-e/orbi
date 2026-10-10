@@ -1,6 +1,6 @@
 ---
 name: technical-writing
-description: "Layered technical-writing standard: Diátaxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for /technical-writing or when writing or reviewing docs, RFCs, readmes, PR descriptions, or commit messages."
+description: "Layered technical-writing standard: Diátaxis structure, Google developer style sentences, STE instruction rules, Global English syntax. Use for /technical-writing or when writing or reviewing docs, the README, ADRs, journal entries, articles, or commit messages."
 disable-model-invocation: true
 ---
 
@@ -91,16 +91,45 @@ Don't mix modes: no reference tables inside a tutorial, no tutorial hand-holding
 ## Voice and repo specifics
 
 - Apply the **unslop** skill to every doc this skill touches. That skill owns the slop-pattern catalog: AI vocabulary, filler, hedging, formatting tells.
-- PR descriptions and commit messages are writing too. Every layer except Diátaxis applies to them. A PR body is a briefing that a reviewer can read in under a minute. Do not paste swarm logs, SHA lists, or metric tables. Link them.
-- Product UI strings are not documentation. Use your product's copy guidelines for those.
-- Indent code snippets with tabs. Write real paths and real symbols. Make every count or tree claim true at the commit that lands it, and include the command that regenerates it.
+- Use the vocabulary in `CONTEXT.md`: turn, request, event, sbire, mood. Each term there lists the words to avoid.
+- Strings the model reads (the system prompt, tool descriptions, tool error messages) are prompts, not documentation. Write them for the model, and from Phase 7 judge a change to them by the evals.
+- Indent code snippets the way the source does, with two spaces. Write real paths and real symbols. Make every count or tree claim true at the commit that lands it, and include the command that regenerates it.
+
+## Commit messages
+
+Delivery is commits on `main`, one per verified unit. Every layer except Diátaxis applies.
+
+- The subject says what the commit does, in the imperative, in about 50 characters: "Ask before running each bash command", not "Updates" or "bash approval changes".
+- The body, when there is one, says why, and what was run to verify it (`bun run typecheck`, `bun test`, a REPL drive). Wrap it at 72 characters.
+- No AI attribution of any kind: no `Co-Authored-By` trailer for a model, no "Generated with" line. The message ends with its last real sentence.
+- Do not paste logs, SHA lists, or token tables. Put the numbers that matter in a sentence, and the rest in the journal.
+
+## ADRs
+
+Follow the process and template in `.claude/skills/adr/` exactly. That skill owns the structure, the scoring scale, and the statuses. This skill only governs the sentences inside it. An agent may draft an ADR as `Proposed`. Only Marek accepts one.
+
+## Journal entries
+
+One entry per work session in `journal/`, named `YYYY-MM-DD-<topic>.md` with the H1 `YYYY-MM-DD: <what happened>`. The directory is gitignored, so an entry is private notes, not a published doc.
+
+- Write in the first person, in the past tense for what happened. It's Marek's journal: what was built, what was decided and why, what surprised him, what to try next.
+- Record the numbers: requests and tokens for a task, startup times, sizes. An article is built from them later.
+- An easy-to-reverse choice that taught something goes here, not in an ADR.
+
+## Articles
+
+One post per roadmap phase, built from that phase's journal entries, ADRs, and tagged commits. The series is written in English first.
+
+- An article is an explanation in Diátaxis terms, so a view is allowed and expected. Anchor it on the phase's question, such as "what does Claude Code actually send?"
+- Link the code at its annotated phase tag (`phase-1`, `phase-2.1`) on GitHub, never at `main`, so the link keeps showing the code the post describes.
+- Quote real output and real numbers from the journal. A reader who checks out the tag should be able to reproduce them.
 
 ## Worked example
 
 Before:
 
-> Configuration of the proto import ratchet budget script parameters is performed via budget.json. Note that it's important to remember that running with --write, which updates the committed budget to reflect the current count, should only be done when lowering it. If exceeded, CI fails.
+> In order to ensure safety, approval of commands is performed via the approve callback. Note that it's important to remember that the --yolo flag, which bypasses the approval step, should only be utilized in a trusted directory. If refused, the model is informed.
 
 After:
 
-> `budget.mjs` reads the committed budget from `budget.json` and counts the files that import protos. If the count exceeds the budget, CI fails. Run `budget.mjs --write` only to lower the budget.
+> Before each `bash` call, `Agent` awaits `options.approve(command)`. If it returns `false`, the model gets "The user declined to run this command." as the tool result. Use `--yolo` only in a directory you can afford to lose. It approves every command.

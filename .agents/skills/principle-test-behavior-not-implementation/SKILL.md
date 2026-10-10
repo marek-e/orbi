@@ -10,7 +10,7 @@ A test calls the code the way its users do and asserts the result they observe a
 
 The check: before you keep a test, ask whether it would still pass if every function it imports returned `undefined`. If yes, it observes no behavior and cannot fail for a defect. Rewrite the assertion or delete the test.
 
-**Why:** A test that cannot fail for a defect costs CI time and review attention and catches nothing. A constant pin also fails when someone edits the constant or the prompt it restates, so it prevents that edit.
+**Why:** A test that cannot fail for a defect costs run time and review attention and catches nothing. A constant pin also fails when someone edits the constant or the prompt it restates, so it prevents that edit.
 
 **Five shapes that still pass when every imported function returns `undefined`:**
 
@@ -22,4 +22,4 @@ The check: before you keep a test, ask whether it would still pass if every func
 
 **The fix:** call the subject inside the test body with one concrete input and assert the literal output or the observable effect, `expect(slugify("Hello, World!")).toBe("hello-world")`. For an absence, assert the presence on the other input in the same test. For a constant, test the mechanism that reads it with one input instead of restating the value. For a mock, assert the payload it received or the state after the call, not that it was called. When no such assertion exists, delete the test.
 
-**Keep** a test of a relation across a table's rows (a key present in two tables, a parent that exists), and a compile-time check in a `*.test-d.ts` file.
+**Keep** a test of a relation across a table's rows (a key present in two tables, a parent that exists), and a compile-time check that `bun run typecheck` enforces.

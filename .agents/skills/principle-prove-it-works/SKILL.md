@@ -15,6 +15,8 @@ Check the real thing, not a proxy:
 - Read the actual value, not a cached or derived representation
 - When verification fails, suspect the observation method before suspecting the system
 
+For Orbi, `bun run typecheck` is a proxy. The real thing is a turn in the REPL (`bun start`): send a prompt, approve the tool call, read the events and the final answer.
+
 ## Script the check when you can
 
 The strongest proof is a deterministic script that re-runs the same comparison, not a one-time eyeball. Write the script, run it, and keep its output as an artifact a reviewer can re-run instead of trusting your word.

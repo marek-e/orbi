@@ -18,17 +18,17 @@ Copy `references/decision-log-template.tsv` (the header row) to start a clean lo
 - **phase.** The phase or workstream.
 - **decision.** What was chosen or done, one line.
 - **why.** The reason in plain words. If a principle drove it, say it plainly, not as a jargon tag.
-- **evidence.** A link or path that proves it: commit SHA, PR number, `file:line`, or an artifact, trace, or screenshot path. Never a paragraph.
-- **result.** The outcome or predicate state: `tests green`, `reverted`, `pixel-diff 0`, `INCONCLUSIVE`, `open`.
+- **evidence.** A link or path that proves it: commit SHA, `file:line`, ADR path, or an artifact, trace, or captured REPL output path. Never a paragraph.
+- **result.** The outcome or predicate state: `typecheck green`, `tests green`, `reverted`, `REPL output identical`, `INCONCLUSIVE`, `open`.
 
 An example, plain-spoken so a reviewer reads it at a glance.
 
 ```
 ts	phase	decision	why	evidence	result
-2026-05-24T09:02:00Z	frame	counted the work first, about 100 components and roughly 75 hours	wanted to know the size before starting a long run	commit 3a9f1c2	found 5 things to sort out before starting
-2026-05-24T09:40:00Z	harness	took screenshots of the old version before changing anything	so we can compare old against new and catch any visual change	scripts/snapshot.sh, baseline/	saved 120 reference screenshots
-2026-05-24T11:15:00Z	widget	moved the widget styles over without changing how it looks	keep the change small and the result identical	commit 7c21e0a, pixel-diff 0	looks identical, tests pass
-2026-05-24T12:30:00Z	widget	threw out a helper's work because its screenshots were blank	checked the real files instead of trusting its summary	worktree reset	reverted, tightened the instructions for next time
+2026-10-12T09:02:00Z	frame	counted what the Anthropic draft touches before replacing it, 4 files and about 300 lines	wanted to know the size before starting a long run	commit 3a9f1c2	found 2 places where the core prints instead of emitting an event
+2026-10-12T09:40:00Z	harness	recorded the REPL's output for three prompts before changing anything	so we can compare old against new and catch any change in what the user sees	scripts/capture-repl.sh, baseline/	saved 3 reference captures
+2026-10-12T11:15:00Z	events	moved the bash tool's output into a tool result event without changing what the REPL shows	keep the change small, and the core never prints	commit 7c21e0a, REPL capture diff empty	looks identical, typecheck passes
+2026-10-12T12:30:00Z	events	threw out a helper's work because its captures were empty	checked the real files instead of trusting its summary	git restore src/	reverted, tightened the instructions for next time
 ```
 
 ## Logging a row
@@ -39,7 +39,7 @@ Use the helper `scripts/log.sh <logfile> <phase> <decision> <why> <evidence> <re
 
 Log decision points and checkpoints, not every action: a fork chosen, a unit completed with its verification result, a pivot or revert with its trigger, a blocker surfaced, a gate fixed. For loop runs, one row per iteration. Skip the trivial and self-evident.
 
-A run is one agent conversation, including its later turns and any summary of it. A pickup, a replacement agent, or a new chat starts a new run. When a run adds to a log that already has rows, its first row has phase `start`, and so does its first row after another run's `start` row. So a run that comes back to a log in a later turn first reads the log's last rows to see whether another run wrote since. A `start` row names the `ts` range of the rows before it that this run did not write, and its evidence names this run, such as its agent id. Use phase `start` for nothing else.
+A run is one agent conversation, including its later turns and any summary of it. A pickup, a replacement agent, or a new chat starts a new run. When a run adds to a log that already has rows, its first row has phase `start`, and so does its first row after another run's `start` row. So a run that comes back to a log in a later turn first reads the log's last rows to see whether another run wrote since. A `start` row names the `ts` range of the rows before it that this run did not write, and its evidence names this run, such as its session id. Use phase `start` for nothing else.
 
 ## Where it lives
 
@@ -54,7 +54,7 @@ Commit it only when the work is ambitious enough that a reviewer needs the trail
 
 ## Audit the log against the transcript
 
-At the end of the run, before handing back, check the log told the truth. Read this run's transcript under the active workspace's `agent-transcripts/` directory (the system prompt names the path). Don't glob across `~/.cursor/projects/*/`. That reads unrelated private chats. Walk this run's rows against what actually happened. Each stretch of them begins at one of this run's `start` rows, or at the first row if this run created the log, and ends at the next `start` row of another run:
+At the end of the run, before handing back, check the log told the truth. Read this run's transcript among this project's session transcripts in the harness's store (Claude Code: `~/.claude/projects/<slug>/*.jsonl`, where `<slug>` is the absolute project path with each `/` turned into `-`; Codex: `~/.codex/sessions/`, filtered to sessions whose recorded working directory is this project). Never read other projects' transcripts. That reads unrelated private chats. Orbi's own session log arrives in Phase 3. If the harness keeps no transcript, audit against your own record of the run and say so. Walk this run's rows against what actually happened. Each stretch of them begins at one of this run's `start` rows, or at the first row if this run created the log, and ends at the next `start` row of another run:
 
 - Check that every row maps to a real decision or action.
 - Check that each row's evidence resolves and shows what the row claims.
@@ -64,7 +64,7 @@ Correct the log, not the story. The audit never edits or removes a row, even an 
 
 ## Cross-model review of the trail
 
-Before handing back, spawn a subagent on a different model family from the one that did the work. Self-review is not a substitute. The subagent reads the audit trail and the run's transcript, then flags what the user should pay attention to. Not a redo of the work, a scan for what's suboptimal or risky.
+Before handing back, spawn a reviewer subagent on a different model family from the one that did the work when the harness offers one. Otherwise use the same model with an independent brief and no shared context. Self-review is not a substitute. The subagent reads the audit trail and the run's transcript, then flags what the user should pay attention to. Not a redo of the work, a scan for what's suboptimal or risky.
 
 - Decisions logged with weak or absent evidence.
 - Verification steps skipped or claimed without proof in the transcript.

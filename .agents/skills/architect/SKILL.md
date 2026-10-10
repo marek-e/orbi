@@ -30,7 +30,7 @@ Skip Phase A only when the work is genuinely greenfield with no surrounding syst
 
 Run the **arena** skill with the design-sketch task and the Phase A grounding artifacts. Pass `references/runner-prompt.md` as each runner's prompt. Each candidate produces a design package shaped per `references/rationale-template.md`.
 
-Take the runners from the `architect runners` line in the `pstack-models.mdc` rule, in place of the `arena runners` line. If the rule or that line is missing, use `claude-opus-5-5-xhigh` and `grok-4.7-xhigh-fast`. Alias and rejected entries follow the runner rules in the **arena** skill's Phase A.
+Take the runners from the `architect runners` line in `~/.agents/pstack-models.md` if that file exists, in place of the `arena runners` line. Without it, run two: one on the judgment model and one on a different model family when the harness offers one; otherwise the same model with an independent brief and no shared context. Alias and rejected entries follow the runner rules in the **arena** skill's Phase A.
 
 Design it twice. Require at least two structurally distinct candidates before synthesis, even when the first looks sufficient. This is the **exhaust-the-design-space** principle skill made concrete. Whole-shape alternatives, not point fixes inside one shape.
 
@@ -43,6 +43,8 @@ Arena returns one synthesized design package. The synthesis decision populates t
 ## Phase C: Agree (opt-in)
 
 Default: proceed directly to implementation with the synthesized design. No human checkpoint.
+
+One exception. If the synthesized design settles something hard to reverse with real alternatives (the runtime, provider coupling, storage or session formats, the event contract, a dependency that shapes the architecture), don't implement it. Hand it to the **adr** skill (`.claude/skills/adr/SKILL.md`) as a `proposed` ADR: the candidates become its options and the synthesis decision its recommendation. Only Marek accepts an ADR, and nothing gets built on it until he does (`AGENTS.md`).
 
 Opt in to a checkpoint when the invoker explicitly asks: "/architect with checkpoint," "stop and show me before implementing," or similar. Then surface the synthesized design and pause for sign-off.
 
@@ -80,4 +82,4 @@ When you scrap:
 
 ## Outputs
 
-The caller's usage is written first and the type sketch derived from it. One file with new types and signatures for small changes. Module map plus type definitions for larger work. The rationale ships alongside, shaped per `references/rationale-template.md`, including the usage sketch and the synthesis decision.
+The caller's usage is written first and the type sketch derived from it. One file with new types and signatures for small changes. Module map plus type definitions for larger work. The rationale ships alongside, shaped per `references/rationale-template.md`, including the usage sketch and the synthesis decision. When the Phase C exception applies, the output is a `proposed` ADR instead of code.

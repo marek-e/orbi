@@ -9,7 +9,8 @@ Adversarial reviewers are useful because they're aggressive. But aggression with
 - What was already tried and rejected
 - What constraints exist outside the code (timeline, dependencies, migration plans)
 - Which parts of the code are temporary scaffolding vs. permanent architecture
-- What the next PR in the stack will address
+- What a later commit or roadmap phase will address
+- Which accepted ADRs constrain the design (`docs/adr/`)
 
 You have the full conversation context. Use it.
 
@@ -36,7 +37,7 @@ This is the most common false positive in code review. A finding that amounts to
 Watch for findings that reveal the reviewer didn't understand the context:
 - Suggesting changes to code the author didn't write or modify
 - Flagging patterns that are consistent with the rest of the codebase (the reviewer just doesn't know that)
-- Recommending approaches that conflict with constraints you know about
+- Recommending approaches that conflict with constraints you know about, such as an accepted ADR or a principle in `docs/vision.md`
 
 These are honest mistakes from reviewers working with limited information. Dismiss them gracefully.
 

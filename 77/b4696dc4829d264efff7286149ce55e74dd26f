@@ -1,0 +1,194 @@
+.agents/skills/poteto-mode/playbooks/session-pickup.md
+  s_a25cdb9b252df9::t_8c1e5979dd7c55 5-8
+.agents/skills/poteto-help/references/recipes.md
+  s_a25cdb9b252df9::t_c3878910e2dd09 17,19,21,25,27,29-30,32,35-37
+.agents/skills/poteto-mode/playbooks/prototype.md
+  s_a25cdb9b252df9::t_05f7a331a3a216 7,9-14
+  s_a25cdb9b252df9::t_a9de70acbdd1a3 8
+.agents/skills/reflect/SKILL.md
+  s_a25cdb9b252df9::t_b802db71f16cba 19,22-23,26,30,32,34,36-38,40,44,52,54,59-61,71
+.agents/skills/typescript-best-practices/references/patterns.md
+  s_a25cdb9b252df9::t_b29788431c2ad2 120-123,127-128,205
+  s_a25cdb9b252df9::t_dfcbb0e2313a0e 3-73,80,82-83,86-87,91,98-99,102-105,108,161,187,192,198,200,202,206-209,213,220-221,224,226-229,237,251-253,262-263,275-287,289,296-298,300,315,318-319,324,326-327,330,332,335-336,338-341,344,349-350,353,356
+.agents/skills/recall/SKILL.md
+  s_a25cdb9b252df9::t_b6bb741a23d1d9 3,13,15,17-21,28-30,33
+.agents/skills/principle-never-block-on-the-human/SKILL.md
+  s_a25cdb9b252df9::t_781eca990a9944 18-21
+.agents/skills/tdd/SKILL.md
+  s_a25cdb9b252df9::t_ee39eec48bc769 11-21,26,28,30,34,36,43
+  s_a25cdb9b252df9::t_a4ae5011326cb6 29
+.agents/skills/poteto-mode/playbooks/authoring-a-skill.md
+  s_a25cdb9b252df9::t_8f21306e8ec72c 5-10,12
+.agents/skills/poteto-help/SKILL.md
+  s_a25cdb9b252df9::t_df01e419b49aa1 13,27-28,37-38,41,43,45,51,53,69,75,86,98-99,103-105,113,116,118,120,126,128,131-133,135,142
+  s_a25cdb9b252df9::t_c3878910e2dd09 17,49
+.agents/skills/principle-sequence-verifiable-units/SKILL.md
+  s_a25cdb9b252df9::t_781eca990a9944 3,11,13,15
+.agents/skills/principle-type-system-discipline/SKILL.md
+  s_a25cdb9b252df9::t_781eca990a9944 11
+.agents/skills/poteto-help/references/prompting.md
+  s_a25cdb9b252df9::t_c3878910e2dd09 9,22,28,30
+.agents/skills/principle-minimize-reader-load/SKILL.md
+  s_a25cdb9b252df9::t_781eca990a9944 16
+.agents/skills/architect/references/design-red-flags.md
+  s_a25cdb9b252df9::t_538b2b6b99cb45 23-24,49-50,62-63
+.agents/skills/principle-build-the-lever/SKILL.md
+  s_a25cdb9b252df9::t_6a63dd3eadcf02 21
+  s_a25cdb9b252df9::t_74c15d78aaa944 22
+.agents/skills/create-verification-skill/references/feature-map-example/run-a-turn.md
+  s_a25cdb9b252df9::t_c43fa8ddd89878 29
+  s_a25cdb9b252df9::t_6b4098b8f7ffdf 1-28,30-37
+.agents/skills/why/references/sources/orbi-records.md
+  s_a25cdb9b252df9::t_695e69b194053e 1-45,47-107
+  s_a25cdb9b252df9::t_898dbff8a6d155 46
+.agents/skills/blast-radius/SKILL.md
+  s_a25cdb9b252df9::t_d5e49fcd90fa34 27,29,33,35-40,43,51,53
+.agents/skills/benchmark-checklist/SKILL.md
+  s_a25cdb9b252df9::t_9de030abb70ace 3,9,15-17,21-27,31-34
+.agents/skills/no-comments/SKILL.md
+  s_a25cdb9b252df9::t_e8e003ddd1ef8f 15,19,23
+.agents/skills/reflect/references/synthesizer.md
+  s_a25cdb9b252df9::t_de29615bffde9d 1,3,17,27,33-34,44,56
+.agents/skills/poteto-mode/playbooks/trace-forensics.md
+  s_a25cdb9b252df9::t_6a5f1bbbddff4e 5-10,13-15
+.agents/skills/arena/SKILL.md
+  s_a25cdb9b252df9::t_09cd0b7fd09cb8 28,33,41
+.agents/skills/poteto-mode/playbooks/refactoring.md
+  s_a25cdb9b252df9::t_b34f37c88f6ac5 5,7,10-14,16
+.agents/skills/architect/references/runner-prompt.md
+  s_a25cdb9b252df9::t_eb8088071dc1c5 20
+.agents/skills/maintain-verification-skill/SKILL.md
+  s_a25cdb9b252df9::t_bc1ed2fe3bebec 3,15-17,21,25,29,33,35,37
+.agents/skills/poteto-mode/playbooks/hillclimb.md
+  s_a25cdb9b252df9::t_9532ca00114751 10
+  s_a25cdb9b252df9::t_eebdf3ea8ac872 7-9,12,15,17,19
+.agents/skills/poteto-mode/playbooks/runtime-forensics.md
+  s_a25cdb9b252df9::t_652a7fdb21f529 5-12,15
+.agents/agents/comment-sicko.md
+  s_a25cdb9b252df9::t_11b8caaf47569a 12,20
+.agents/agents/poteto-agent.md
+  s_a25cdb9b252df9::t_11b8caaf47569a 3
+.agents/skills/automate-me/SKILL.md
+  s_a25cdb9b252df9::t_1a074dc02927dd 3,11,17,29,31,37,44,46,60,67,69,71-72,75-79,82,88,101,107
+.agents/skills/create-verification-skill/references/feature-map-example/approve-a-command.md
+  s_a25cdb9b252df9::t_9db304de2ca8a0 1-36
+.agents/skills/why/references/investigator-prompt.md
+  s_a25cdb9b252df9::t_8501d5ac658cfb 3,9,35,48-50,58,68,76,91,94
+.agents/skills/poteto-mode/playbooks/committing.md
+  s_a25cdb9b252df9::t_14a0e6ef3c60d8 1-32
+.agents/skills/principle-prove-it-works/SKILL.md
+  s_a25cdb9b252df9::t_781eca990a9944 18-19
+.agents/skills/principle-exhaust-the-design-space/SKILL.md
+  s_a25cdb9b252df9::t_6a63dd3eadcf02 3,14,16,22-23
+.agents/skills/poteto-mode/playbooks/pause-safely.md
+  s_a25cdb9b252df9::t_1dcd661ff62182 6-8
+.agents/skills/show-me-your-work/SKILL.md
+  s_a25cdb9b252df9::t_51c5f017eaafbd 21-22,28-31,42,57,67
+.agents/skills/technical-writing/SKILL.md
+  s_a25cdb9b252df9::t_4e2a649a5b19c3 3,94-125,131,135
+.agents/skills/why/references/sources/code-archaeology.md
+  s_a25cdb9b252df9::t_6392a7d5ec8c25 5,9-11,39,42,46,58-59,62,66,69-70,74,76
+.agents/skills/poteto-mode/playbooks/feature.md
+  s_a25cdb9b252df9::t_cfb2412c544c63 5-6,9,12-14,16-17,21
+.agents/skills/poteto-mode/SKILL.md
+  s_a25cdb9b252df9::t_c3bcef45d521b3 20,23,27-29,31-34,81,83,91,93,95,97,104,107,111,121,125-128,131,136-138
+  s_a25cdb9b252df9::t_0b606a0148cf38 66,115,135
+.agents/skills/poteto-mode/playbooks/eval.md
+  s_a25cdb9b252df9::t_f5afc774058fe1 5-9,12,17,22-23,25-28,30
+.agents/skills/principle-encode-lessons-in-structure/SKILL.md
+  s_a25cdb9b252df9::t_74c15d78aaa944 19-21,27,32
+.agents/skills/principle-boundary-discipline/SKILL.md
+  s_a25cdb9b252df9::t_74c15d78aaa944 19
+  s_a25cdb9b252df9::t_2e73109f79fbcb 18
+.agents/skills/reflect/references/tooling-reviewer.md
+  s_a25cdb9b252df9::t_de29615bffde9d 3,5,9,13-14,17-19,25,27-28,35-38
+.agents/skills/principle-experience-first/SKILL.md
+  s_a25cdb9b252df9::t_2e73109f79fbcb 17
+  s_a25cdb9b252df9::t_6a63dd3eadcf02 3,9,13-14
+.agents/skills/why/SKILL.md
+  s_a25cdb9b252df9::t_9029569bb04e64 66,80
+  s_a25cdb9b252df9::t_64bc8ac2d7d8dd 3,23,30,32,43,46,49-50,53,59,62,64,70-72,74,76,78,84,88,91-92,103,105,115-116
+  s_a25cdb9b252df9::t_7f3fc3387d4bb0 13
+.agents/skills/poteto-mode/playbooks/investigation.md
+  s_a25cdb9b252df9::t_72893c5d68b04c 9,12
+.agents/skills/why/references/source-playbook.md
+  s_a25cdb9b252df9::t_29ea32f09ccd11 3,5,7-8
+.agents/skills/why/references/epistemics.md
+  s_a25cdb9b252df9::t_ecd7cc7d2b69f0 5,16-17,19-20,29,31,40,50-51,59,114,116-117,119,126
+  s_a25cdb9b252df9::t_062a7d7769826c 41,71
+.agents/skills/principle-foundational-thinking/SKILL.md
+  s_a25cdb9b252df9::t_781eca990a9944 14,19
+  s_a25cdb9b252df9::t_0c9bfc6b50e570 13
+.agents/skills/how/SKILL.md
+  s_a25cdb9b252df9::t_7f3fc3387d4bb0 11,18,24,30,36
+.agents/skills/reflect/references/judgment-reviewer.md
+  s_a25cdb9b252df9::t_de29615bffde9d 3,5,22-25
+.agents/skills/poteto-mode/playbooks/multi-phase-plan.md
+  s_a25cdb9b252df9::t_c2084de843a74f 1,5,7-11,13-14,16-24,27,29,33,35,37,39,41,44-53,58-63,65,67-71,73,75-77,81-87,89,91,93,107,109,111,113,115-124,126,128-131,133,135-137,139,141-143,145,148-150,154,158,162,166,169
+  s_a25cdb9b252df9::t_3c34ceb6b5b6ce 12,15
+.agents/skills/setup-pstack/SKILL.md
+  s_a25cdb9b252df9::t_70a444cfb62775 3,8,14,18,22,29,31,35,37,39,43-44,46-62,65-68,71,75
+.agents/skills/typescript-best-practices/SKILL.md
+  s_a25cdb9b252df9::t_ae70b59cd32599 3,10,16-20,24-25,29,31-35
+  s_a25cdb9b252df9::t_a808e6463ba436 12
+  s_a25cdb9b252df9::t_50f23e251da8b4 11
+.agents/skills/principle-model-the-domain/SKILL.md
+  s_a25cdb9b252df9::t_781eca990a9944 24-25
+.agents/skills/create-verification-skill/SKILL.md
+  s_a25cdb9b252df9::t_0fc8b055011b80 9,25,29-30,36
+  s_a25cdb9b252df9::t_e024184740aed4 19
+.agents/skills/poteto-mode/playbooks/autonomous-run.md
+  s_a25cdb9b252df9::t_014f707e196fd8 5-6,9
+.agents/skills/principle-test-behavior-not-implementation/SKILL.md
+  s_a25cdb9b252df9::t_781eca990a9944 13,25
+.agents/skills/architect/SKILL.md
+  s_a25cdb9b252df9::t_eb8088071dc1c5 33,47-48,85
+.agents/skills/create-verification-skill/references/feature-map-example/README.md
+  s_a25cdb9b252df9::t_ae4fc02d15708a 1,3,7-10,12-13,18-22,26-29,41,45-46
+  s_a25cdb9b252df9::t_c43fa8ddd89878 11,17
+.agents/skills/poteto-mode/playbooks/bug-fix.md
+  s_a25cdb9b252df9::t_03be8c338f5f7d 5,7-9,11,13
+.agents/skills/why/references/synthesizer-prompt.md
+  s_a25cdb9b252df9::t_87e4a55a29e27b 32,41,44,65,90,92,97,103-104,110,130
+  s_a25cdb9b252df9::t_040962dc222d0d 7
+.agents/skills/poteto-mode/playbooks/perf-issue.md
+  s_a25cdb9b252df9::t_7b234324776ac2 5-10,22,24-26
+.agents/skills/reflect/references/divergent-reviewer.md
+  s_a25cdb9b252df9::t_de29615bffde9d 5,7,14,23-26
+.agents/skills/correct/SKILL.md
+  s_a25cdb9b252df9::t_dd0f3fe685a3de 15,20,26
+.agents/skills/figure-it-out/SKILL.md
+  s_a25cdb9b252df9::t_10902a2eb96f0c 27,31,48,52
+.agents/skills/how/references/explainer-prompt.md
+  s_a25cdb9b252df9::t_cfc14ecac52657 23,33,51
+.agents/skills/how/references/explorer-prompt.md
+  s_a25cdb9b252df9::t_cf701f39fed377 21,24,26,37
+.agents/skills/interrogate/SKILL.md
+  s_a25cdb9b252df9::t_c66ec1bfc3bde6 9,18,29,36,40-41,43,71
+.agents/skills/interrogate/references/code-quality-review.md
+  s_a25cdb9b252df9::t_3e04dea84629fa 11,23,33,43
+.agents/skills/interrogate/references/lead-judgment.md
+  s_a25cdb9b252df9::t_587a289977c93e 12-13,40
+.agents/skills/interrogate/references/rubric.md
+  s_a25cdb9b252df9::t_cba4e9d0a68ec7 23,49,74-76
+.agents/skills/swarm/SKILL.md
+  s_a25cdb9b252df9::t_29df45196ea8a3 9,24-25,30
+.agents/skills/teach/SKILL.md
+  s_a25cdb9b252df9::t_fd5b789c80a674 11-12,17,19,21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "77b4696dc4829d264efff7286149ce55e74dd26f",
+  "prompts": {},
+  "sessions": {
+    "s_a25cdb9b252df9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6fd5caa7-4452-4e9f-9e8f-1695a2e1ab86",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}

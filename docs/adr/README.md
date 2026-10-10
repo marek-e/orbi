@@ -24,5 +24,6 @@ Each decision that is hard to reverse and has real alternatives gets an ADR here
 | [0005](0005-core-emits-events.md) | How does the core talk to UIs? | Proposed | Typed event stream, to be decided before Phase 5 |
 | [0006](0006-model-access.md) | How does Orbi access models? | Accepted | ChatGPT subscription first, no Claude subscription tokens |
 | [0007](0007-message-format.md) | Which message format does the core use? | Accepted | Orbi's own format, one adapter per provider |
+| [0008](0008-formatter-and-linter.md) | Which formatter and linter check Orbi's code? | Accepted | Oxlint with type-aware rules, and Oxfmt |
 
 0001, 0004, 0006 and 0007 were decided before this format existed and converted on 2026-10-10. Their criteria and options were confirmed then, not invented to fit the decision. 0003 stays a short record: 0007 scores its option. 0005 goes through the full process before Phase 5.
